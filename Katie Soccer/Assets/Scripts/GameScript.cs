@@ -61,6 +61,7 @@ public class GameScript : MonoBehaviour
             piecesWereMoving = false;
             int nextTurn = (int)currentTurn * -1;
             currentTurn = (Team)nextTurn;
+            StopAllPieces();
             OnNextTurn();
         }
     }
@@ -76,6 +77,15 @@ public class GameScript : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void StopAllPieces()
+    {
+        foreach (GameObject piece in allPieces)
+        {
+            Rigidbody rb = piece.GetComponent<Rigidbody>();
+            rb.Sleep();
+        }
     }
 
     public void EnablePieceInteraction(GameObject[] pieces)

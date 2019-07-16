@@ -6,6 +6,7 @@ public class PieceAnimation : MonoBehaviour
     public LineRenderer Arrow;
     public Vector3 ArrowDirection;
     public float MaxArrowLength = 1.5f;
+    public Animator LightAnimator;
 
     // Update is called once per frame
     void Update()
@@ -42,5 +43,17 @@ public class PieceAnimation : MonoBehaviour
     public void HideArrow()
     {
         Arrow.enabled = false;
+    }
+
+    public void IlluminatePieceLight()
+    {
+        LightAnimator.SetTrigger("Illuminate");
+        LightAnimator.ResetTrigger("Darken");
+    }
+
+    public void DarkenPieceLight()
+    {
+        LightAnimator.SetTrigger("Darken");
+        LightAnimator.ResetTrigger("Illuminate");
     }
 }

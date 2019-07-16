@@ -41,7 +41,6 @@ public class GameScript : MonoBehaviour
         Array values = Enum.GetValues(typeof(Team));
         int randomIndex = Mathf.FloorToInt(UnityEngine.Random.Range(0f, values.Length));
         currentTurn = (Team)values.GetValue(randomIndex);
-        Debug.Log(currentTurn);
         OnNextTurn();
     }
 

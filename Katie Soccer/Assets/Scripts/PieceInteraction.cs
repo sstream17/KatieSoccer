@@ -4,12 +4,12 @@ public class PieceInteraction : MonoBehaviour
 {
     public Rigidbody rb;
     public float Speed = 200f;
-    public float SpeedClamp = 3f;
     public PieceAnimation PieceAnimation;
 
     private bool isSelected = false;
     private float triggerOffset = 0.3f;
-    private float speedAdjust = 2f;
+    private float speedClamp = 5f;
+    private float speedAdjust = 3f;
     private Vector3 arrow;
     private bool launchable = false;
     private Vector3 targetVector;
@@ -63,7 +63,7 @@ public class PieceInteraction : MonoBehaviour
             {
                 launchable = false;
                 PieceAnimation.PieceLaunched();
-                rb.AddForce(Vector3.ClampMagnitude(targetVector * speedAdjust, SpeedClamp) * -Speed);
+                rb.AddForce(Vector3.ClampMagnitude(targetVector * speedAdjust, speedClamp) * -Speed);
             }
             else
             {

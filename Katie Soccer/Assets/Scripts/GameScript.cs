@@ -7,6 +7,7 @@ public class GameScript : MonoBehaviour
     public GameObject[] TeamTwoPieces;
     public GameObject Ball;
     public Scoreboard Scoreboard;
+    public LevelTransition LevelTransition;
     public enum Team { TeamOne = -1, TeamTwo = 1 };
 
     private GameObject[] allPieces;
@@ -185,7 +186,7 @@ public class GameScript : MonoBehaviour
     {
         if (endGame)
         {
-            Debug.Log("end");
+            LevelTransition.FadeToNextLevel();
         }
 
         if (teamOneScore >= scoreToWin)

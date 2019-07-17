@@ -15,8 +15,10 @@ public class GameScript : MonoBehaviour
     private bool piecesMoving = false;
     private bool piecesWereMoving = false;
 
+    private int scoreToWin = 3;
     private int teamOneScore = 0;
     private int teamTwoScore = 0;
+    private bool endGame = false;
 
     public void SetStartingPositions()
     {
@@ -181,10 +183,32 @@ public class GameScript : MonoBehaviour
 
     public void OnPostGoal()
     {
-        Scoreboard.HideMessage();
-        ResetAllPiecesToStart();
-        ChangeTurn();
-        Time.timeScale = 1f;
+        if (endGame)
+        {
+            Debug.Log("end");
+        }
+
+        if (teamOneScore >= scoreToWin)
+        {
+            OnWin(Team.TeamOne);
+        }
+        else if (teamTwoScore >= scoreToWin)
+        {
+            OnWin(Team.TeamTwo);
+        }
+        else
+        {
+            Scoreboard.HideMessage();
+            ResetAllPiecesToStart();
+            ChangeTurn();
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void OnWin(Team winningTeam)
+    {
+        endGame = true;
+        StartCoroutine(Scoreboard.ShuffleMessage(winningTeam.ToString()));
     }
 
     private void AddToScore(Team scoringTeam)

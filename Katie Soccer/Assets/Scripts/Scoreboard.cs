@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Scoreboard : MonoBehaviour
@@ -21,9 +22,17 @@ public class Scoreboard : MonoBehaviour
         MessageAnimator.SetTrigger("SlideIn");
     }
 
-    public void HideMessage()
+    public bool HideMessage()
     {
         MessageAnimator.ResetTrigger("SlideIn");
         MessageAnimator.SetTrigger("SlideOut");
+        return true;
+    }
+
+    public IEnumerator ShuffleMessage(string message)
+    {
+        HideMessage();
+        yield return new WaitForSecondsRealtime(1f);
+        DisplayMessage(message);
     }
 }

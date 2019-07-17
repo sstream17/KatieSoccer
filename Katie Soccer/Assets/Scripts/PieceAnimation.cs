@@ -16,23 +16,23 @@ public class PieceAnimation : MonoBehaviour
 
     public void PieceSelected()
     {
-        SelectionAnimator.SetTrigger("Selected");
         SelectionAnimator.ResetTrigger("Deselected");
         SelectionAnimator.ResetTrigger("Launched");
+        SelectionAnimator.SetTrigger("Selected");
     }
 
     public void PieceDeselected()
     {
-        SelectionAnimator.SetTrigger("Deselected");
         SelectionAnimator.ResetTrigger("Selected");
         SelectionAnimator.ResetTrigger("Launched");
+        SelectionAnimator.SetTrigger("Deselected");
     }
 
     public void PieceLaunched()
     {
-        SelectionAnimator.SetTrigger("Launched");
         SelectionAnimator.ResetTrigger("Selected");
         SelectionAnimator.ResetTrigger("Deselected");
+        SelectionAnimator.SetTrigger("Launched");
     }
 
     public void DrawArrow()

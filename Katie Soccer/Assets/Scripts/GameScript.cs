@@ -5,14 +5,17 @@ public class GameScript : MonoBehaviour
 {
     public GameObject[] TeamOnePieces;
     public GameObject[] TeamTwoPieces;
-    public GameObject ball;
-
+    public GameObject Ball;
+    public Scoreboard Scoreboard;
     public enum Team { TeamOne = -1, TeamTwo = 1 };
 
     private GameObject[] allPieces;
     private Team currentTurn;
     private bool piecesMoving = false;
     private bool piecesWereMoving = false;
+
+    private int teamOneScore = 0;
+    private int teamTwoScore = 0;
 
     void Awake()
     {
@@ -32,7 +35,7 @@ public class GameScript : MonoBehaviour
             iterator = iterator + 1;
         }
 
-        allPieces[iterator] = ball;
+        allPieces[iterator] = Ball;
     }
 
     // Start is called before the first frame update
@@ -143,6 +146,21 @@ public class GameScript : MonoBehaviour
 
     public void OnGoalScored(Team scoringTeam)
     {
-        Debug.Log(scoringTeam);
+        StopAllPieces();
+        AddToScore(scoringTeam);
+        Scoreboard.UpdateScoreboard(teamOneScore, teamTwoScore);
+        Time.timeScale = 0f;
+    }
+
+    private void AddToScore(Team scoringTeam)
+    {
+        if (scoringTeam.Equals(Team.TeamOne))
+        {
+            teamOneScore = teamOneScore + 1;
+        }
+        else
+        {
+            teamTwoScore = teamTwoScore + 1;
+        }
     }
 }

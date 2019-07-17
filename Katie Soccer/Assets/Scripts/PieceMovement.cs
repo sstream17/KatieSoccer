@@ -4,7 +4,7 @@ public class PieceMovement : MonoBehaviour
 {
     public bool IsMoving { get; private set; } = false;
 
-    private float threshold = 0.0001f;
+    private float threshold = 0.001f;
     private const int noMovementFrames = 3;
     Vector3[] previousLocations = new Vector3[noMovementFrames];
 

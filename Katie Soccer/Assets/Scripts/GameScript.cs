@@ -10,12 +10,21 @@ public class GameScript : MonoBehaviour
     public enum Team { TeamOne = -1, TeamTwo = 1 };
 
     private GameObject[] allPieces;
+    private Vector3[] startingPositions;
     private Team currentTurn;
     private bool piecesMoving = false;
     private bool piecesWereMoving = false;
 
     private int teamOneScore = 0;
     private int teamTwoScore = 0;
+
+    public void SetStartingPositions()
+    {
+        for (int i = 0; i < allPieces.Length; i++)
+        {
+            startingPositions[i] = allPieces[i].transform.position;
+        }
+    }
 
     void Awake()
     {
@@ -36,6 +45,10 @@ public class GameScript : MonoBehaviour
         }
 
         allPieces[iterator] = Ball;
+
+        startingPositions = new Vector3[allPieces.Length];
+
+        SetStartingPositions();
     }
 
     // Start is called before the first frame update
@@ -141,6 +154,14 @@ public class GameScript : MonoBehaviour
             DisablePieceInteraction(TeamOnePieces);
             IlluminatePieces(TeamTwoPieces);
             EnablePieceInteraction(TeamTwoPieces);
+        }
+    }
+
+    public void ResetAllPiecesToStart()
+    {
+        for (int i = 0; i < allPieces.Length; i++)
+        {
+            allPieces[i].transform.position = startingPositions[i];
         }
     }
 

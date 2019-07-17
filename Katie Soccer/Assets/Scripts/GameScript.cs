@@ -74,11 +74,16 @@ public class GameScript : MonoBehaviour
         if (!piecesMoving && piecesWereMoving)
         {
             piecesWereMoving = false;
-            int nextTurn = (int)currentTurn * -1;
-            currentTurn = (Team)nextTurn;
+            ChangeTurn();
             StopAllPieces();
             OnNextTurn();
         }
+    }
+
+    private void ChangeTurn()
+    {
+        int nextTurn = (int)currentTurn * -1;
+        currentTurn = (Team)nextTurn;
     }
 
     private bool PiecesStoppedMoving(GameObject[] pieces)
@@ -167,10 +172,19 @@ public class GameScript : MonoBehaviour
 
     public void OnGoalScored(Team scoringTeam)
     {
+        Scoreboard.DisplayMessage("Goal!");
         StopAllPieces();
         AddToScore(scoringTeam);
         Scoreboard.UpdateScoreboard(teamOneScore, teamTwoScore);
         Time.timeScale = 0f;
+    }
+
+    public void OnPostGoal()
+    {
+        Scoreboard.HideMessage();
+        ResetAllPiecesToStart();
+        ChangeTurn();
+        Time.timeScale = 1f;
     }
 
     private void AddToScore(Team scoringTeam)

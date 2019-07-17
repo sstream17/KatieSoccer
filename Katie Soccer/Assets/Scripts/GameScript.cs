@@ -140,4 +140,9 @@ public class GameScript : MonoBehaviour
             EnablePieceInteraction(TeamTwoPieces);
         }
     }
+
+    public void OnGoalScored(Team scoringTeam)
+    {
+        Debug.Log(scoringTeam);
+    }
 }

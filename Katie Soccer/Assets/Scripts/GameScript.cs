@@ -207,11 +207,11 @@ public class GameScript : MonoBehaviour
 
         if (teamOneScore >= scoreToWin)
         {
-            OnWin(Team.TeamOne);
+            OnWin(GameData.TeamOneName);
         }
         else if (teamTwoScore >= scoreToWin)
         {
-            OnWin(Team.TeamTwo);
+            OnWin(GameData.TeamTwoName);
         }
         else
         {
@@ -222,10 +222,10 @@ public class GameScript : MonoBehaviour
         }
     }
 
-    public void OnWin(Team winningTeam)
+    public void OnWin(string winningTeam)
     {
         endGame = true;
-        StartCoroutine(Scoreboard.ShuffleMessage(winningTeam.ToString()));
+        StartCoroutine(Scoreboard.ShuffleMessage($"{winningTeam} wins!"));
     }
 
     private void AddToScore(Team scoringTeam)

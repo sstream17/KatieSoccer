@@ -48,14 +48,8 @@ public class TwoPlayerCustomization : MonoBehaviour
 
     public void PlayerTwoSet()
     {
-        SetTeamNames(TeamOneInput.text, TeamTwoInput.text);
+        GameData.SetTeamNames(TeamOneInput.text, TeamTwoInput.text);
         LevelTransition.FadeToNextLevel();
-    }
-
-    public void SetTeamNames(string teamOneName, string teamTwoName)
-    {
-        GameData.TeamOneName = teamOneName;
-        GameData.TeamTwoName = teamTwoName;
     }
 
     private void UpdateButtonFunctions(Turn turn)

@@ -7,8 +7,8 @@ public class GameScript : MonoBehaviour
     public GameObject[] TeamTwoPieces;
     public GameObject Ball;
     public Scoreboard Scoreboard;
-    public SpriteRenderer TeamOneLight;
-    public SpriteRenderer TeamTwoLight;
+    public SpriteRenderer TeamOneGoal;
+    public SpriteRenderer TeamTwoGoal;
     public LevelTransition LevelTransition;
 
     public enum Team { TeamOne = -1, TeamTwo = 1 };
@@ -48,16 +48,16 @@ public class GameScript : MonoBehaviour
         scoreToWin = GameData.ScoreToWin;
         SetTeamColor(TeamOnePieces, GameData.TeamOneColor);
         SetTeamColor(TeamTwoPieces, GameData.TeamTwoColor);
-        TeamOneLight.color = new Color(
+        TeamOneGoal.color = new Color(
             GameData.TeamOneColor.r,
             GameData.TeamOneColor.g,
             GameData.TeamOneColor.b,
-            0.35f);
-        TeamTwoLight.color = new Color(
+            0.79f);
+        TeamTwoGoal.color = new Color(
             GameData.TeamTwoColor.r,
             GameData.TeamTwoColor.g,
             GameData.TeamTwoColor.b,
-            0.35f);
+            0.79f);
 
         int numberOfAllPieces = TeamOnePieces.Length + TeamTwoPieces.Length + 1;
         allPieces = new GameObject[numberOfAllPieces];

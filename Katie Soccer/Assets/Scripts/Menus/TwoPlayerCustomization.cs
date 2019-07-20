@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +36,7 @@ public class TwoPlayerCustomization : MonoBehaviour
         }
     }
 
-    void Awake()
+    private void OnEnable()
     {
         SetFirstColorSelected();
     }
@@ -148,6 +149,18 @@ public class TwoPlayerCustomization : MonoBehaviour
         LevelTransition.FadeToNextLevel();
     }
 
+    IEnumerator ResetBeforeExiting()
+    {
+        DeselectOtherColors();
+        yield return new WaitForSeconds(1f);
+        Menu.OpenPlayerSelectMenu();
+    }
+
+    public void ReturnToLastScreen()
+    {
+        StartCoroutine(ResetBeforeExiting());
+    }
+
     private void UpdateButtonFunctions(Turn turn)
     {
         NextButton.onClick.RemoveAllListeners();
@@ -155,7 +168,7 @@ public class TwoPlayerCustomization : MonoBehaviour
         if (turn.Equals(Turn.TeamOne))
         {
             NextButton.onClick.AddListener(PlayerOneSet);
-            BackButton.onClick.AddListener(Menu.OpenPlayerSelectMenu);
+            BackButton.onClick.AddListener(ReturnToLastScreen);
         }
         else
         {
@@ -163,6 +176,4 @@ public class TwoPlayerCustomization : MonoBehaviour
             BackButton.onClick.AddListener(PlayerOneReset);
         }
     }
-
-
 }

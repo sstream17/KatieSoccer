@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Scoreboard : MonoBehaviour
 {
+    public TextMeshProUGUI TeamOneName;
+    public TextMeshProUGUI TeamTwoName;
     public TextMeshProUGUI TeamOneScoreDisplay;
     public TextMeshProUGUI TeamTwoScoreDisplay;
     public Animator MessageAnimator;

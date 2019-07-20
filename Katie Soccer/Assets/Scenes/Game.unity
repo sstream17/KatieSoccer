@@ -1840,7 +1840,7 @@ GameObject:
   - component: {fileID: 674770596}
   - component: {fileID: 674770595}
   m_Layer: 5
-  m_Name: Player1
+  m_Name: Player1Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2748,6 +2748,7 @@ MonoBehaviour:
   Ball: {fileID: 338738134}
   Scoreboard: {fileID: 1004441577}
   LevelTransition: {fileID: 6970572497200825351}
+  GameData: {fileID: 11400000, guid: 6ce720c37596726478207a4cca54a0d0, type: 2}
 --- !u!1 &907425640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3115,6 +3116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ec84c7ee94985439db15cfd7a6ba56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TeamOneName: {fileID: 674770595}
+  TeamTwoName: {fileID: 1886543963}
   TeamOneScoreDisplay: {fileID: 1325067492}
   TeamTwoScoreDisplay: {fileID: 1899923351}
   MessageAnimator: {fileID: 707884427}
@@ -4217,7 +4220,7 @@ GameObject:
   - component: {fileID: 1886543964}
   - component: {fileID: 1886543963}
   m_Layer: 5
-  m_Name: Player2
+  m_Name: Player2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

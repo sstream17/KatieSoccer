@@ -8,6 +8,7 @@ public class GameScript : MonoBehaviour
     public GameObject Ball;
     public Scoreboard Scoreboard;
     public LevelTransition LevelTransition;
+
     public enum Team { TeamOne = -1, TeamTwo = 1 };
 
     private GameObject[] allPieces;
@@ -31,6 +32,10 @@ public class GameScript : MonoBehaviour
 
     void Awake()
     {
+        Scoreboard.TeamOneName.text = GameData.TeamOneName;
+        Scoreboard.TeamTwoName.text = GameData.TeamTwoName;
+        scoreToWin = GameData.ScoreToWin;
+
         int numberOfAllPieces = TeamOnePieces.Length + TeamTwoPieces.Length + 1;
         allPieces = new GameObject[numberOfAllPieces];
 

@@ -30,11 +30,22 @@ public class GameScript : MonoBehaviour
         }
     }
 
+    private void SetTeamColor(GameObject[] pieces, Color color)
+    {
+        foreach (GameObject piece in pieces)
+        {
+            MeshRenderer renderer = piece.GetComponent<MeshRenderer>();
+            renderer.material.color = color;
+        }
+    }
+
     void Awake()
     {
         Scoreboard.TeamOneName.text = GameData.TeamOneName;
         Scoreboard.TeamTwoName.text = GameData.TeamTwoName;
         scoreToWin = GameData.ScoreToWin;
+        SetTeamColor(TeamOnePieces, GameData.TeamOneColor);
+        SetTeamColor(TeamTwoPieces, GameData.TeamTwoColor);
 
         int numberOfAllPieces = TeamOnePieces.Length + TeamTwoPieces.Length + 1;
         allPieces = new GameObject[numberOfAllPieces];

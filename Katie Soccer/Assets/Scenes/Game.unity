@@ -2748,7 +2748,6 @@ MonoBehaviour:
   Ball: {fileID: 338738134}
   Scoreboard: {fileID: 1004441577}
   LevelTransition: {fileID: 6970572497200825351}
-  GameData: {fileID: 11400000, guid: 6ce720c37596726478207a4cca54a0d0, type: 2}
 --- !u!1 &907425640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4557,7 +4556,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
-    m_Resolution: -1
+    m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05

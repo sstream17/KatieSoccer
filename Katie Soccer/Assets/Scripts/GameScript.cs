@@ -9,6 +9,7 @@ public class GameScript : MonoBehaviour
     public Scoreboard Scoreboard;
     public SpriteRenderer TeamOneGoal;
     public SpriteRenderer TeamTwoGoal;
+    public Confetti Confetti;
     public LevelTransition LevelTransition;
 
     public enum Team { TeamOne = -1, TeamTwo = 1 };
@@ -201,8 +202,15 @@ public class GameScript : MonoBehaviour
         }
     }
 
+    private Color GetTeamColor(Team team)
+    {
+        return team.Equals(Team.TeamOne) ? GameData.TeamOneColor : GameData.TeamTwoColor;
+    }
+
     public void OnGoalScored(Team scoringTeam)
     {
+        Color color = GetTeamColor(scoringTeam);
+        Confetti.Play(color);
         Scoreboard.DisplayMessage("Goal!");
         StopAllPieces();
         AddToScore(scoringTeam);
@@ -227,6 +235,7 @@ public class GameScript : MonoBehaviour
         }
         else
         {
+            Confetti.Stop();
             Scoreboard.HideMessage();
             ResetAllPiecesToStart();
             ChangeTurn();

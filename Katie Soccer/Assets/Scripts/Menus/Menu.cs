@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    public enum MenuScreen { Main, PlayerSelect, TwoPlayerCustomization };
+    public enum MenuScreen { Main, PlayerSelect, TwoPlayerCustomization, ScoreSelection };
 
     public GameObject MainMenu;
     public GameObject PlayerSelectMenu;
     public GameObject TwoPlayerCustomizationMenu;
+    public GameObject ScoreSelectionMenu;
     private GameObject currentMenu;
 
     void Awake()
@@ -31,6 +32,9 @@ public class Menu : MonoBehaviour
             case MenuScreen.TwoPlayerCustomization:
                 newMenu = TwoPlayerCustomizationMenu;
                 break;
+            case MenuScreen.ScoreSelection:
+                newMenu = ScoreSelectionMenu;
+                break;
             default:
                 newMenu = MainMenu;
                 break;
@@ -40,21 +44,23 @@ public class Menu : MonoBehaviour
         currentMenu.SetActive(true);
     }
 
-
     public void OpenMainMenu()
     {
         SwitchMenu(MenuScreen.Main);
     }
-
 
     public void OpenPlayerSelectMenu()
     {
         SwitchMenu(MenuScreen.PlayerSelect);
     }
 
-
     public void OpenTwoPlayerCustomizationMenu()
     {
         SwitchMenu(MenuScreen.TwoPlayerCustomization);
+    }
+
+    public void OpenScoreSelectionMenu()
+    {
+        SwitchMenu(MenuScreen.ScoreSelection);
     }
 }

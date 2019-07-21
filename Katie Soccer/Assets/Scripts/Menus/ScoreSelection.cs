@@ -19,7 +19,7 @@ public class ScoreSelection : MonoBehaviour
         scoreToWin = int.Parse(ScoreDisplay.text);
     }
 
-    public void UpdateScore(int score)
+    public void UpdateScoreDisplay(int score)
     {
         ScoreDisplay.text = score.ToString();
     }
@@ -28,7 +28,7 @@ public class ScoreSelection : MonoBehaviour
     {
         IncreaseButton.interactable = true;
         scoreToWin = scoreToWin - 1;
-        UpdateScore(scoreToWin);
+        UpdateScoreDisplay(scoreToWin);
 
         if (scoreToWin == minimumScore)
         {
@@ -40,7 +40,7 @@ public class ScoreSelection : MonoBehaviour
     {
         DecreaseButton.interactable = true;
         scoreToWin = scoreToWin + 1;
-        UpdateScore(scoreToWin);
+        UpdateScoreDisplay(scoreToWin);
 
         if (scoreToWin == maximumScore)
         {
@@ -50,6 +50,7 @@ public class ScoreSelection : MonoBehaviour
 
     public void OpenNextMenu()
     {
+        GameData.ScoreToWin = scoreToWin;
         if (NextMenu == 2)
         {
             Menu.OpenTwoPlayerCustomizationMenu();

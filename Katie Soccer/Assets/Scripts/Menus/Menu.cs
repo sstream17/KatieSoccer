@@ -59,8 +59,10 @@ public class Menu : MonoBehaviour
         SwitchMenu(MenuScreen.TwoPlayerCustomization);
     }
 
-    public void OpenScoreSelectionMenu()
+    public void OpenScoreSelectionMenu(int nextMenu)
     {
+        ScoreSelection scoreSelection = ScoreSelectionMenu.GetComponent<ScoreSelection>();
+        scoreSelection.NextMenu = nextMenu;
         SwitchMenu(MenuScreen.ScoreSelection);
     }
 }

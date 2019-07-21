@@ -503,7 +503,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 197559369}
-        m_MethodName: OpenMainMenu
+        m_MethodName: OpenTwoPlayerCustomizationMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -901,8 +901,8 @@ RectTransform:
   m_Children:
   - {fileID: 154151348}
   - {fileID: 313090870}
-  - {fileID: 1990423626}
   - {fileID: 785348692}
+  - {fileID: 1990423626}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -926,6 +926,7 @@ MonoBehaviour:
   MainMenu: {fileID: 154151347}
   PlayerSelectMenu: {fileID: 313090869}
   TwoPlayerCustomizationMenu: {fileID: 1990423625}
+  ScoreSelectionMenu: {fileID: 785348691}
 --- !u!1 &198802009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1252,7 @@ GameObject:
   - component: {fileID: 269709172}
   - component: {fileID: 269709171}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1320,8 +1321,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1810165944}
-        m_MethodName: FadeToNextLevel
+      - m_Target: {fileID: 785348693}
+        m_MethodName: OpenNextMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1862,12 +1863,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 197559369}
-        m_MethodName: OpenTwoPlayerCustomizationMenu
-        m_Mode: 1
+        m_MethodName: OpenScoreSelectionMenu
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3133,7 +3134,7 @@ RectTransform:
   - {fileID: 111707815}
   - {fileID: 269709170}
   m_Father: {fileID: 197559368}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3155,6 +3156,8 @@ MonoBehaviour:
   ScoreDisplay: {fileID: 136928350}
   DecreaseButton: {fileID: 95500635}
   IncreaseButton: {fileID: 198802011}
+  NextMenu: 0
+  Menu: {fileID: 197559369}
 --- !u!1 &1030659952
 GameObject:
   m_ObjectHideFlags: 0
@@ -5854,7 +5857,7 @@ RectTransform:
   - {fileID: 1434279863}
   - {fileID: 698191301}
   m_Father: {fileID: 197559368}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5957,7 +5960,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Play
+  m_text: Next
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

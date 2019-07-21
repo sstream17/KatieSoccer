@@ -7,13 +7,14 @@ public class ScoreSelection : MonoBehaviour
     public TextMeshProUGUI ScoreDisplay;
     public Button DecreaseButton;
     public Button IncreaseButton;
-    public LevelTransition LevelTransition;
+    public int NextMenu;
+    public Menu Menu;
 
     private int scoreToWin;
     private readonly int minimumScore = 1;
     private readonly int maximumScore = 5;
 
-    void Awake()
+    void OnEnable()
     {
         scoreToWin = int.Parse(ScoreDisplay.text);
     }
@@ -47,9 +48,11 @@ public class ScoreSelection : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public void OpenNextMenu()
     {
-        GameData.ScoreToWin = scoreToWin;
-        LevelTransition.FadeToNextLevel();
+        if (NextMenu == 2)
+        {
+            Menu.OpenTwoPlayerCustomizationMenu();
+        }
     }
 }

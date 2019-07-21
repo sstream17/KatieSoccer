@@ -153,7 +153,7 @@ public class TwoPlayerCustomization : MonoBehaviour
     {
         DeselectOtherColors();
         yield return new WaitForSeconds(1f);
-        Menu.OpenPlayerSelectMenu();
+        Menu.OpenScoreSelectionMenu(2);
     }
 
     public void ReturnToLastScreen()

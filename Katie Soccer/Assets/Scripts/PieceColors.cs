@@ -21,5 +21,5 @@ public static class PieceColors
     public static Color Lime = new Color(0.70f, 1.00f, 0.70f);
     public static Color Solar = new Color(1.00f, 0.39f, 0.41f);
     public static Color HotPink = new Color(1.00f, 0.59f, 0.88f);
-    public static Color DarkBlue = new Color(0.20f, 0.36f, 0.76f);
+    public static Color DarkBlue = new Color(0.10f, 0.10f, 0.41f);
 }

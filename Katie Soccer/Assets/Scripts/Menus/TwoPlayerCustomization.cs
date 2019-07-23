@@ -99,25 +99,7 @@ public class TwoPlayerCustomization : MonoBehaviour
 
         if (colorButton != null)
         {
-            switch (colorButton.name)
-            {
-                case "RedButton":
-                    return PieceColors.Red;
-                case "BlueButton":
-                    return PieceColors.Blue;
-                case "PinkButton":
-                    return PieceColors.Pink;
-                case "PurpleButton":
-                    return PieceColors.Purple;
-                case "YellowButton":
-                    return PieceColors.Yellow;
-                case "GreenButton":
-                    return PieceColors.Green;
-                case "OrangeButton":
-                    return PieceColors.Orange;
-                case "BlackButton":
-                    return PieceColors.Black;
-            }
+            return colorButton.Image.color;
         }
         return color;
     }

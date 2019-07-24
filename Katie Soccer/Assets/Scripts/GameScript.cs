@@ -84,13 +84,18 @@ public class GameScript : MonoBehaviour
         SetStartingPositions();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void GetRandomTurn()
     {
         Array values = Enum.GetValues(typeof(Team));
         int randomIndex = Mathf.FloorToInt(UnityEngine.Random.Range(0f, values.Length));
         currentTurn = (Team)values.GetValue(randomIndex);
         OnNextTurn();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        GetRandomTurn();
     }
 
     // Update is called once per frame

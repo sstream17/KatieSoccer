@@ -7,8 +7,10 @@ public class Pause : MonoBehaviour
     public ScrollRect PauseMenu;
     public RectTransform Content;
     public Transform Scoreboard;
+    public ExitModal ExitModal;
     public GameScript GameScript;
     public GameObject[] AllPieces;
+    public LevelTransition LevelTransition;
     public static bool Paused = false;
 
     private Vector2 contentStartingPosition;
@@ -101,9 +103,31 @@ public class Pause : MonoBehaviour
 
     public void OnRestart()
     {
+        ExitModal.gameObject.SetActive(false);
         GameScript.StopAllPieces();
         GameScript.ResetScores();
         GameScript.ResetAllPiecesToStart();
+        GameScript.GetRandomTurn();
         OnResume();
+    }
+
+    public void OnQuit()
+    {
+        Paused = false;
+        LevelTransition.FadeToLevel(0);
+    }
+
+    public void PromptRestart()
+    {
+        ExitModal.SetMessage("Restart");
+        ExitModal.SetExitButton(OnRestart);
+        ExitModal.gameObject.SetActive(true);
+    }
+
+    public void PromptQuit()
+    {
+        ExitModal.SetMessage("Quit");
+        ExitModal.SetExitButton(OnQuit);
+        ExitModal.gameObject.SetActive(true);
     }
 }

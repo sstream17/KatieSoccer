@@ -23,6 +23,7 @@ public class GameScript : MonoBehaviour
     private int scoreToWin = 3;
     private int teamOneScore = 0;
     private int teamTwoScore = 0;
+    private bool wasPaused = false;
     private bool endGame = false;
 
     public void SetStartingPositions()
@@ -95,20 +96,28 @@ public class GameScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        piecesMoving = !PiecesStoppedMoving(allPieces);
-        if (piecesMoving)
+        if (Pause.Paused)
         {
-            piecesWereMoving = true;
-            DisablePieceInteraction(TeamOnePieces);
-            DisablePieceInteraction(TeamTwoPieces);
+            wasPaused = true;
         }
-        
-        if (!piecesMoving && piecesWereMoving)
+
+        if (!wasPaused)
         {
-            piecesWereMoving = false;
-            ChangeTurn();
-            StopAllPieces();
-            OnNextTurn();
+            piecesMoving = !PiecesStoppedMoving(allPieces);
+            if (piecesMoving)
+            {
+                piecesWereMoving = true;
+                DisablePieceInteraction(TeamOnePieces);
+                DisablePieceInteraction(TeamTwoPieces);
+            }
+
+            if (!piecesMoving && piecesWereMoving)
+            {
+                piecesWereMoving = false;
+                ChangeTurn();
+                StopAllPieces();
+                OnNextTurn();
+            }
         }
     }
 
@@ -259,5 +268,17 @@ public class GameScript : MonoBehaviour
         {
             teamTwoScore = teamTwoScore + 1;
         }
+    }
+
+    public void ResetScores()
+    {
+        teamOneScore = 0;
+        teamTwoScore = 0;
+        Scoreboard.UpdateScoreboard(teamOneScore, teamTwoScore);
+    }
+
+    public void SetUnpaused()
+    {
+        wasPaused = false;
     }
 }

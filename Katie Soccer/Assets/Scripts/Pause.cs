@@ -84,11 +84,26 @@ public class Pause : MonoBehaviour
         PauseMenu.vertical = false;
     }
 
-    public void OnUnpause()
+    IEnumerator Unpaused()
+    {
+        yield return new WaitForFixedUpdate();
+        GameScript.SetUnpaused();
+    }
+
+    public void OnResume()
     {
         Time.timeScale = 1f;
         PauseMenu.vertical = true;
         Paused = false;
         GameScript.EnablePieceInteraction(AllPieces);
+        StartCoroutine(Unpaused());
+    }
+
+    public void OnRestart()
+    {
+        GameScript.StopAllPieces();
+        GameScript.ResetScores();
+        GameScript.ResetAllPiecesToStart();
+        OnResume();
     }
 }

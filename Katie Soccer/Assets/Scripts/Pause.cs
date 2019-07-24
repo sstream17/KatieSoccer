@@ -37,7 +37,7 @@ public class Pause : MonoBehaviour
             {
                 if (distanceDragged <= -400f)
                 {
-                    LerpToPosition(contentStartingPosition.y - contentHeight, 4f);
+                    LerpToPosition(contentStartingPosition.y - contentHeight * 1.2f, 3f);
                     StartCoroutine(OnPause());
                 }
                 else
@@ -75,7 +75,7 @@ public class Pause : MonoBehaviour
 
     IEnumerator OnPause()
     {
-        while (Content.position.y >= contentStartingPosition.y - contentHeight)
+        while (Content.position.y > contentStartingPosition.y - contentHeight)
         {
             yield return new WaitForEndOfFrame();
         }

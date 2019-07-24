@@ -13,17 +13,15 @@ public class Pause : MonoBehaviour
 
     private Vector2 contentStartingPosition;
     private float contentHeight;
-    private Vector2 contentPreviousPosition;
     private Vector2 scoreboardRestingPosition;
     private bool dragStarted = false;
-    private bool wasMoving = false;
+    private bool letGo = true;
     
 
     void Start()
     {
         contentStartingPosition = Content.position;
         contentHeight = Content.rect.height;
-        contentPreviousPosition = contentStartingPosition;
         scoreboardRestingPosition = Scoreboard.position;
     }
 
@@ -33,23 +31,26 @@ public class Pause : MonoBehaviour
         if (dragStarted)
         {
             float distanceDragged = Scoreboard.position.y - scoreboardRestingPosition.y;
-            if (distanceDragged <= -400f)
+            if (letGo)
             {
-                LerpToPosition(contentStartingPosition.y - contentHeight, 3f);
-                StartCoroutine(OnPause());
-            }
-            else
-            {
-                LerpToPosition(contentStartingPosition.y, 20f);
+                if (distanceDragged <= -400f)
+                {
+                    LerpToPosition(contentStartingPosition.y - contentHeight, 4f);
+                    StartCoroutine(OnPause());
+                }
+                else
+                {
+                    LerpToPosition(contentStartingPosition.y, 20f);
+                }
             }
         }
         else if (!Paused)
         {
-            LerpToPosition(contentStartingPosition.y, 8f);
+            if (letGo)
+            {
+                LerpToPosition(contentStartingPosition.y, 8f);
+            }
         }
-
-        wasMoving = (contentPreviousPosition.y - Content.position.y) >= 0.1f;
-        contentPreviousPosition = Content.position;
     }
 
     private void LerpToPosition(float position, float speedModifier = 1f)
@@ -61,7 +62,13 @@ public class Pause : MonoBehaviour
 
     public void DragStarted()
     {
+        letGo = false;
         dragStarted = true;
+    }
+
+    public void DragEnded()
+    {
+        letGo = true;
     }
 
     IEnumerator OnPause()

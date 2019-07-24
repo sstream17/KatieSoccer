@@ -75,7 +75,7 @@ public class Pause : MonoBehaviour
 
     IEnumerator OnPause()
     {
-        while (Content.position.y > contentStartingPosition.y - contentHeight)
+        while (Content.position.y >= contentStartingPosition.y - contentHeight)
         {
             yield return new WaitForEndOfFrame();
         }
@@ -97,7 +97,7 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1f;
         PauseMenu.vertical = true;
         Paused = false;
-        GameScript.EnablePieceInteraction(AllPieces);
+        GameScript.ReenablePieceInteraction();
         StartCoroutine(Unpaused());
     }
 

@@ -172,6 +172,18 @@ public class GameScript : MonoBehaviour
         }
     }
 
+    public void ReenablePieceInteraction()
+    {
+        if (currentTurn.Equals(Team.TeamOne))
+        {
+            EnablePieceInteraction(TeamOnePieces);
+        }
+        else
+        {
+            EnablePieceInteraction(TeamTwoPieces);
+        }
+    }
+
     public void IlluminatePieces(GameObject[] pieces)
     {
         foreach (GameObject piece in pieces)

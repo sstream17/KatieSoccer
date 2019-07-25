@@ -8,8 +8,8 @@ public static class PieceColors
     public static Color Peach = new Color(1.00f, 0.69f, 0.56f);
     public static Color Gold = new Color(0.80f, 0.74f, 0.39f);
     public static Color Yellow = new Color(0.94f, 0.89f, 0.22f);
-    public static Color Lime = new Color(0.70f, 1.00f, 0.70f);
-    public static Color Green = new Color(0.47f, 0.78f, 0.46f);
+    public static Color Lime = new Color(0.00f, 1.00f, 0.00f);
+    public static Color Green = new Color(0.40f, 0.70f, 0.40f);
     public static Color Teal = new Color(0.13f, 0.71f, 0.55f);
     public static Color LightBlue = new Color(0.60f, 0.80f, 0.99f);
     public static Color Blue = new Color(0.14f, 0.60f, 0.95f);

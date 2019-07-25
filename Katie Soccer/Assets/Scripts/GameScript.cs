@@ -24,6 +24,7 @@ public class GameScript : MonoBehaviour
     private int teamOneScore = 0;
     private int teamTwoScore = 0;
     private bool wasPaused = false;
+    private bool goalScored = false;
     private bool endGame = false;
 
     public void SetStartingPositions()
@@ -114,6 +115,11 @@ public class GameScript : MonoBehaviour
                 piecesWereMoving = true;
                 DisablePieceInteraction(TeamOnePieces);
                 DisablePieceInteraction(TeamTwoPieces);
+            }
+
+            if (goalScored)
+            {
+                piecesWereMoving = false;
             }
 
             if (!piecesMoving && piecesWereMoving)
@@ -235,6 +241,7 @@ public class GameScript : MonoBehaviour
 
     public void OnGoalScored(Team scoringTeam)
     {
+        goalScored = true;
         Color color = GetTeamColor(scoringTeam);
         Confetti.Play(color);
         Scoreboard.DisplayMessage("Goal!");
@@ -246,6 +253,7 @@ public class GameScript : MonoBehaviour
 
     public void OnPostGoal()
     {
+        goalScored = false;
         if (endGame)
         {
             LevelTransition.FadeToNextLevel();
@@ -264,7 +272,6 @@ public class GameScript : MonoBehaviour
             Confetti.Stop();
             Scoreboard.HideMessage();
             ResetAllPiecesToStart();
-            ChangeTurn();
             Time.timeScale = 1f;
         }
     }

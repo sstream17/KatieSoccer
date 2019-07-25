@@ -64,7 +64,7 @@ Material:
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
     - _Cull: 2
-    - _Cutoff: 1
+    - _Cutoff: 0.02
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
@@ -74,10 +74,10 @@ Material:
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 1
     - _GlossyReflections: 1
     - _LightingEnabled: 1
-    - _Metallic: 0.05
+    - _Metallic: 0.1
     - _Mode: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
